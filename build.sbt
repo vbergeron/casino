@@ -1,6 +1,11 @@
 ThisBuild / scalaVersion := "3.7.3"
 
 lazy val `casino-bloom` = (project in file("modules/bloom"))
+    .settings(
+      libraryDependencies ++= Seq(
+        "org.scalatest" %% "scalatest" % "3.2.19" % Test
+      )
+    )
 
 lazy val `casino-benchmarks` = (project in file("modules/benchmarks"))
     .enablePlugins(JmhPlugin)

@@ -2,17 +2,18 @@ package casino.bloom
 
 import java.lang.invoke.MethodHandles
 import java.nio.ByteOrder
+import scala.annotation.switch
 
-private val C1 = 0x87c37b91114253d5L
-private val C2 = 0x4cf5ad432745937fL
+private inline val C1 = 0x87c37b91114253d5L
+private inline val C2 = 0x4cf5ad432745937fL
 
-private val R1 = 31
-private val R2 = 27
-private val R3 = 33
+private inline val R1 = 31
+private inline val R2 = 27
+private inline val R3 = 33
 
-private val M  = 5
-private val N1 = 0x52dce729
-private val N2 = 0x38495ab5
+private inline val M  = 5
+private inline val N1 = 0x52dce729
+private inline val N2 = 0x38495ab5
 
 private val LONG_LE = MethodHandles.byteArrayViewVarHandle(classOf[Array[Long]], ByteOrder.LITTLE_ENDIAN)
 

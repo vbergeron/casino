@@ -1,9 +1,9 @@
-package casino.bloom
-package benchmarks
+package casino.benchmarks
 
 import org.openjdk.jmh.annotations.{*, given}
 import org.openjdk.jmh.infra.Blackhole
 import scala.compiletime.uninitialized
+import casino.bloom.*
 
 import java.util.concurrent.TimeUnit
 import scala.util.Random

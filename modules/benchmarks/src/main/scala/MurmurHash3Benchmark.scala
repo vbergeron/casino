@@ -1,10 +1,9 @@
-package casino.bloom
-package benchmarks
+package casino.benchmarks
 
 import org.openjdk.jmh.annotations.{*, given}
 import org.openjdk.jmh.infra.Blackhole
 import scala.compiletime.uninitialized
-
+import casino.bloom.*
 import java.util.concurrent.TimeUnit
 import scala.util.Random
 import casino.bloom.hash128
@@ -22,22 +21,13 @@ class MurmurHash3Benchmark:
 
     var seed: Int = 42
 
-    var data: Array[Byte]            = uninitialized
-    var datasets: Array[Array[Byte]] = uninitialized
+    var data: Array[Byte] = uninitialized
 
     @Setup(Level.Trial)
     def setup(): Unit =
         val random = new Random(42) // Fixed seed for reproducibility
         data = new Array[Byte](size)
         random.nextBytes(data)
-
-        // Create multiple datasets for more realistic benchmarking
-        datasets = Array.ofDim[Array[Byte]](10)
-        var i = 0
-        while i < datasets.length do
-            datasets(i) = new Array[Byte](size)
-            random.nextBytes(datasets(i))
-            i += 1
 
     @Benchmark
     def hash128Throughput(blackhole: Blackhole): Unit =
